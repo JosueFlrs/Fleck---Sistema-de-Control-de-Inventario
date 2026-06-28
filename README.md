@@ -48,7 +48,6 @@ inventario-egi/
 │   │   ├── static/            # Estilos CSS unificados (styles.css) e imágenes
 │   │   └── templates/         # Vistas dinámicas Jinja2 en modo oscuro moderno
 │   ├── Dockerfile             # Receta Slim optimizada con compiladores del sistema (gcc)
-│   └── requirements.txt       # Congelación estricta de dependencias cruzadas
 │
 ├── sql/                       # Persistencia Relacional (Instancia Windows Física)
 │   ├── schema.sql             # Estructura DDL (Tablas de control, aulas y responsables)
@@ -67,6 +66,8 @@ inventario-egi/
 │
 ├── desplegar.sh               # Orquestador Bash interactivo para entornos Ubuntu
 ├── README.md
+├── .env.example
+├── requirements.txt           # Congelación estricta de dependencias cruzadas
 └── .gitignore
 ```
 
@@ -76,10 +77,11 @@ inventario-egi/
 
 Para garantizar la integridad del código, el desarrollo inicial sobre la rama `main` mutó hacia una asignación estructurada de responsabilidades por componentes:
 
-* **Sofía Bazán** — Arquitectura perimetral, topología virtual e ingeniería de redes en pfSense.
-* **Milagros Carrillo** — Control de identidades, federación LDAP e integración institucional AD.
-* **Julián Méndez** — Ingeniería de datos relacionales, esquemas transaccionales en SQL Server.
-* **Fernando Castro** — Administración NoSQL, empaquetado de microservicios en Kubernetes y modelado de políticas Zero-Trust con Calico. *(Nota técnica: Sus contribuciones iniciales en el motor NoSQL y políticas se unificaron directamente mediante merges supervisados en la línea de desarrollo principal).*
+* **David Copa** — Arquitectura perimetral, topología virtual e ingeniería de redes en pfSense, Control de identidades, federación LDAP e integración institucional AD.
+* **Josue Flores** — Frontend y Backend
+* **Emiliano Prezioza** — Ingeniería de datos relacionales, esquemas transaccionales en SQL Server.
+* **Hassan El Hadad** — Administración NoSQL
+* **Santiago Molina** — Empaquetado de microservicios en Kubernetes y modelado de políticas Zero-Trust con Calico.
 
 ---
 
