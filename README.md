@@ -1,17 +1,6 @@
 # 🖥️ Plataforma de Inventario Seguro (EGI — ITU)
 
-> **Proyecto Integrador de Infraestructura y Desarrollo** > *Instituto Tecnológico Universitario (ITU) · Conectividad Federada bajo el Dominio: `itu.local`*
-
 Un ecosistema centralizado e híbrido diseñado para el control de activos informáticos en laboratorios. Este proyecto combina autenticación corporativa distribuida (Active Directory/LDAP), segmentación estricta de bases de datos (SQL Server + MongoDB), un perímetro de red blindado por hardware virtual (pfSense) y una arquitectura de microservicios robusta orquestada nativamente sobre **Kubernetes (Minikube)**.
-
----
-
-## ⚡ Novedades e Implementaciones Recientes
-
-* **Rediseño de Interfaz "Split-Screen"**: Migración estética integral hacia un esquema moderno en **Modo Oscuro** optimizado con las variables nativas de Bootstrap 5.3, eliminando redundancias visuales y adaptando la experiencia de usuario a entornos críticos.
-* **Alineación de Estilo en Código**: Homogeneización total de los identificadores, variables y clases CSS personalizados bajo la convención estándar `camelCase` estructurados en idioma español.
-* **Automatización de Base de Datos NoSQL**: Despliegue de un `ConfigMap` exclusivo en Kubernetes que inyecta automáticamente el script `init.js` en el volumen de inicialización de MongoDB (`/docker-entrypoint-initdb.d`), autoconfigurando el esquema y los índices de rendimiento desde el arranque.
-* **Orquestación Unificada en Linux**: Creación de un script automatizado en Bash (`desplegar.sh`) nativo para Ubuntu que levanta toda la infraestructura en el clúster con un único comando ordenado.
 
 ---
 
@@ -55,18 +44,18 @@ El sistema opera bajo un esquema de **JOIN lógico en Backend**. La API desarrol
 ```text
 inventario-egi/
 ├── backend/                   # Microservicio API Flask (Lógica del Sistema)
-│   ├── src/                   # Código fuente (app.py, consultas.py, conexiones.py)
+│   ├── app/                   # Código fuente (app.py, consultas.py, conexiones.py)
 │   │   ├── static/            # Estilos CSS unificados (styles.css) e imágenes
 │   │   └── templates/         # Vistas dinámicas Jinja2 en modo oscuro moderno
 │   ├── Dockerfile             # Receta Slim optimizada con compiladores del sistema (gcc)
 │   └── requirements.txt       # Congelación estricta de dependencias cruzadas
 │
-├── db-sql/                    # Persistencia Relacional (Instancia Windows Física)
+├── sql/                       # Persistencia Relacional (Instancia Windows Física)
 │   ├── schema.sql             # Estructura DDL (Tablas de control, aulas y responsables)
-│   └── seed-data.sql          # Registros iniciales de consistencia
+│   └── data.sql               # Registros iniciales de consistencia
 │
-├── db-mongo/                  # Persistencia Documental Automatizada
-│   └── mongo-init-configmap.yaml # Manifiesto K8s con datos semilla integrados
+├── mongo/                     # Persistencia Documental Automatizada
+│   └── init.js                # Script para inicializar Mongo
 │
 ├── kubernetes/                # Declaración de Infraestructura Programada
 │   ├── namespace.yaml         # Aislamiento lógico ('inventario')
