@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # =========================================================================
 # desplegar.sh — Script de automatización de infraestructura para Ubuntu
 # Proyecto: Inventario ITU
@@ -20,8 +18,8 @@ kubectl apply -f namespace.yaml
 
 # 2. Cargar configuraciones, scripts de inicio y secretos
 echo -e "${AMARILLO}➔ Aplicando ConfigMaps y Secrets...${SIN_COLOR}"
-kubectl apply -f mongo-init-configmap.yaml
-kubectl apply -f configmap.yaml
+kubectl apply -f configmap/mongo-init-configmap.yaml
+kubectl apply -f configmap/configmap.yaml
 kubectl apply -f secrets/sqlserver-secret.yaml
 
 # 3. Aplicar las Políticas de Red (Firewall interno)
@@ -35,7 +33,7 @@ kubectl apply -f services/ldap-service.yaml
 
 # 5. Levantar la base de datos NoSQL MongoDB
 echo -e "${AMARILLO}➔ Desplegando MongoDB (Almacenamiento + Pod + Servicio)...${SIN_COLOR}"
-kubectl apply -f mongo-pvc.yaml
+kubectl apply -f deployments/mongo-pvc.yaml
 kubectl apply -f deployments/mongo-deployment.yaml
 kubectl apply -f services/mongo-service.yaml
 
