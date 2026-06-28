@@ -1,0 +1,14 @@
+# =============================================================
+# mongo-pvc.yaml
+# =============================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+  namespace: inventario
+spec:
+  accessModes:
+    - ReadWriteOnce          # un solo nodo escribe
+  resources:
+    requests:
+      storage: 1Gi           # 1 GB para datos de inventario

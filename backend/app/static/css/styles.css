@@ -1,0 +1,184 @@
+/* =========================================================
+   Inventario ITU — Estilos globales (Modo Oscuro Moderno)
+   ========================================================= */
+
+:root {
+    --ituPrincipal: #0f172a; /* Slate 900 */
+    --ituAcento:    #3b82f6; /* Blue 500 */
+    --ituFondo:     #020617; /* Slate 950 */
+    --ituTarjeta:   #1e293b; /* Slate 800 */
+    --ituTexto:     #e2e8f0; /* Slate 200 */
+    --ituBorde:     #334155; /* Slate 700 */
+}
+
+body {
+    background-color: var(--ituFondo);
+    color: var(--ituTexto);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ----- Sidebar de navegación ----- */
+.barraLateral {
+    background-color: var(--ituPrincipal);
+    border-right: 1px solid var(--ituBorde);
+    min-height: 100vh;
+    padding-top: 1rem;
+}
+
+.barraLateral .nav-link {
+    color: #94a3b8;
+    padding: .6rem 1.2rem;
+    border-radius: 8px;
+    margin: 4px 12px;
+    transition: all .2s ease;
+}
+
+.barraLateral .nav-link:hover,
+.barraLateral .nav-link.active {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.barraLateral .nav-link.active {
+    background-color: var(--ituAcento);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.barraLateral .nav-link i {
+    margin-right: 10px;
+}
+
+/* ----- Zona de contenido principal ----- */
+.contenidoPrincipal {
+    padding: 1.5rem 2rem;
+}
+
+/* ----- Tarjetas Generales y Estadísticas ----- */
+.card, .tarjetaEstadistica {
+    background-color: var(--ituTarjeta) !important;
+    border: 1px solid var(--ituBorde) !important;
+    border-radius: 14px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--ituBorde) !important;
+}
+
+.cajaIcono {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* ----- Badges (Etiquetas) ----- */
+.etiquetaAula {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    font-weight: 600;
+}
+
+.etiquetaSerie {
+    font-size: .85rem;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--ituBorde);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ----- Tablas ----- */
+.table {
+    color: var(--ituTexto) !important;
+}
+
+.table thead th {
+    background-color: var(--ituPrincipal) !important;
+    border-bottom: 2px solid var(--ituBorde) !important;
+    color: #f8fafc !important;
+    font-weight: 600;
+}
+
+.table td {
+    border-bottom: 1px solid var(--ituBorde) !important;
+    background-color: transparent !important;
+}
+
+/* ----- Inputs y Formularios ----- */
+.form-control, .form-select {
+    background-color: var(--ituFondo) !important;
+    border: 1px solid var(--ituBorde) !important;
+    color: var(--ituTexto) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--ituAcento) !important;
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+}
+
+/* ----- Botones ----- */
+.btn-primary {
+    background-color: var(--ituAcento);
+    border-color: var(--ituAcento);
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+/* ----- Footer ----- */
+footer {
+    background-color: var(--ituPrincipal);
+    border-top: 1px solid var(--ituBorde);
+    color: #64748b;
+    font-size: .85rem;
+    padding: 1rem 1.5rem;
+}
+
+/* Corrección estética para el acople de íconos en los inputs */
+.input-group:focus-within .input-group-text {
+    border-color: var(--ituAcento) !important;
+    transition: border-color 0.15s ease-in-out;
+}
+
+/* Quita el borde y sombreado predeterminado de Bootstrap en el input individual */
+.input-group .form-control:focus {
+    border-color: var(--ituBorde) !important; /* Mantiene su borde base */
+    box-shadow: none !important;              /* Elimina el anillo grueso azul */
+}
+
+/* Aplica el efecto de iluminación al contenedor entero cuando se hace focus adentro */
+.input-group:focus-within {
+    border-radius: 6px; /* Ajuste sutil para que coincida con las esquinas */
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important; /* Anillo exterior */
+}
+
+/* Ilumina los bordes internos (tanto del icono como del input) al mismo tiempo */
+.input-group:focus-within .form-control,
+.input-group:focus-within .input-group-text {
+    border-color: var(--ituAcento) !important;
+    transition: border-color 0.15s ease-in-out;
+}
+
+/* =========================================================
+   RESPONSIVE 
+   ========================================================= */
+@media (max-width: 768px) {
+    .contenidoPrincipal {
+        padding: 1rem;
+    }
+    footer {
+        justify-content: center !important;
+        text-align: center;
+        font-size: .8rem;
+    }
+}

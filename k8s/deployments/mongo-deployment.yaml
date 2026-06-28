@@ -1,0 +1,45 @@
+# =============================================================
+# mongo-deployment.yaml
+# Deployment: el pod de MongoDB.
+# =============================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: inventario
+  labels:
+    app: mongodb                # etiqueta que usa el Service y las NetworkPolicies
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb           
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:7.0   
+          ports:
+            - containerPort: 27017   # puerto estandar de Mongo
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db
+            - name: script-inicializacion
+              mountPath: /docker-entrypoint-initdb.d
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+        - name: script-inicializacion
+          configMap:
+            name: mongo-init-script
