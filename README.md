@@ -48,7 +48,6 @@ inventario-egi/
 │   │   ├── static/            # Estilos CSS unificados (styles.css) e imágenes
 │   │   └── templates/         # Vistas dinámicas Jinja2 en modo oscuro moderno
 │   ├── Dockerfile             # Receta Slim optimizada con compiladores del sistema (gcc)
-│   └── requirements.txt       # Congelación estricta de dependencias cruzadas
 │
 ├── sql/                       # Persistencia Relacional (Instancia Windows Física)
 │   ├── schema.sql             # Estructura DDL (Tablas de control, aulas y responsables)
@@ -67,6 +66,8 @@ inventario-egi/
 │
 ├── desplegar.sh               # Orquestador Bash interactivo para entornos Ubuntu
 ├── README.md
+├── .env.example
+├── requirements.txt           # Congelación estricta de dependencias cruzadas
 └── .gitignore
 ```
 
