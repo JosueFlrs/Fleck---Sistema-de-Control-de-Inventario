@@ -1,15 +1,13 @@
 # Manual Técnico de Arquitectura e Interconexión Híbrida: Windows Server, SQL Server y Clúster Linux
 
 > **Aviso Operativo sobre Topologías de Hardware**
-> Este proyecto fue desarrollado considerando la variabilidad de recursos físicos en el equipo de trabajo. La arquitectura lógica y el código son idénticos, difiriendo únicamente en la ubicación física del motor relacional.
 >
-> | Rol del Servidor | Entorno A (Recursos Limitados) | Entorno B (Recursos Óptimos) |
-> | :--- | :--- | :--- |
-> | **Active Directory (AD/LDAP)** | `192.168.1.10` | `192.168.1.10` |
-> | **SQL Server Engine** | `192.168.1.10` (Hospedado con AD) | `192.168.1.20` (VM Dedicada) |
-> | **Clúster Minikube (Backend/Web)** | `192.168.1.30` | `192.168.1.30` |
+> | Rol del Servidor | Entorno |
+> | :--- | :--- |
+> | **Active Directory (AD/LDAP)** | `192.168.1.10` |
+> | **SQL Server Engine** | `192.168.1.20` (VM Dedicada) |
+> | **Clúster Minikube (Backend/Web)** | `192.168.1.30` |
 > 
-> *Nota: A lo largo del documento, aplique la dirección IP de SQL Server que corresponda a su entorno de ejecución.*
 
 ---
 
