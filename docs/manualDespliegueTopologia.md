@@ -2,7 +2,7 @@
 
 > **Aviso Operativo sobre Topologías de Hardware**
 >
-> | Rol del Servidor | Entorno B (Recursos Óptimos) |
+> | Rol del Servidor | Entorno |
 > | :--- | :--- |
 > | **Active Directory (AD/LDAP)** | `192.168.1.10` |
 > | **SQL Server Engine** | `192.168.1.20` (VM Dedicada) |
