@@ -62,6 +62,8 @@ inventario-egi/
 │   ├── deployments/           # Ciclo de vida de Pods (Flask y MongoDB Engine)
 │   ├── services/              # Abstracción de red interna y puentes de Endpoints externos
 │   └── network-policies/      # Restricciones Calico de conectividad mínima indispensable
+│   └── configMap/             # Variables de entorno
+│   └── secrets/               # Datos sensibles
 │
 ├── desplegar.sh               # Orquestador Bash interactivo para entornos Ubuntu
 ├── README.md
