@@ -37,5 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
             fila.classList.add('table-active');
         });
     });
-
 });
+
+function alternarVisibilidadContrasenia() {
+        const inputContrasenia = document.getElementById('password');
+        const iconoContrasenia = document.getElementById('iconoContrasenia');
+
+        if (inputContrasenia.type === 'password') {
+            // Mostrar contraseña y cambiar al icono del ojo tachado
+            inputContrasenia.type = 'text';
+            iconoContrasenia.classList.remove('bi-eye');
+            iconoContrasenia.classList.add('bi-eye-slash');
+        } else {
+            // Ocultar contraseña y volver al icono del ojo normal
+            inputContrasenia.type = 'password';
+            iconoContrasenia.classList.remove('bi-eye-slash');
+            iconoContrasenia.classList.add('bi-eye');
+        }
+    }

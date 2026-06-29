@@ -27,55 +27,69 @@
     style="background-color: var(--ituFondo)"
   >
     <div class="container" style="max-width: 850px">
-      
-      {% with messages = get_flashed_messages(with_categories=true) %} 
-        {% if messages %} 
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-              {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-          {% endfor %} 
-        {% endif %} 
-      {% endwith %}
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div
+        class="alert alert-{{ category }} alert-dismissible fade show"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
 
       <div
         class="card border-0 shadow-lg"
         style="border-radius: 16px; overflow: hidden"
       >
         <div class="row g-0">
-          
-          <div 
+          <div
             class="col-md-5 d-flex flex-column align-items-center justify-content-center py-5 px-4 text-center"
-            style="background-color: var(--ituPrincipal); border-right: 1px solid var(--ituBorde);"
+            style="
+              background-color: var(--ituPrincipal);
+              border-right: 1px solid var(--ituBorde);
+            "
           >
             <img
               src="{{ url_for('static', filename='img/logo-tranparente.png') }}"
               alt="Logo"
               class="mb-3"
-              style="width: 100px; height: auto;"
+              style="width: 100px; height: auto"
             />
-            
+
             <h3 class="text-white fw-bold mb-1">Inventario ITU</h3>
-            <p class="text-muted small px-2">Sistema Integrado de Control de Inventario</p>
-            
-            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-50 px-3 py-2 mt-2">
+            <p class="text-muted small px-2">
+              Sistema Integrado de Control de Inventario
+            </p>
+
+            <span
+              class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-50 px-3 py-2 mt-2"
+            >
               Acceso Restringido
             </span>
           </div>
 
-          <div 
+          <div
             class="col-md-7 card-body p-4 p-sm-5 d-flex flex-column justify-content-center"
             style="background-color: var(--ituTarjeta)"
           >
             <div class="mb-4">
               <h4 class="text-white fw-semibold mb-1">Bienvenido</h4>
-              <p class="text-muted small">Por favor, ingresá tus credenciales institucionales.</p>
+              <p class="text-muted small">
+                Por favor, ingresá tus credenciales institucionales.
+              </p>
             </div>
 
             <form method="POST" action="{{ url_for('login') }}">
               <div class="mb-4">
-                <label for="username" class="form-label text-muted fw-semibold mb-2">
+                <label
+                  for="username"
+                  class="form-label text-muted fw-semibold mb-2"
+                >
                   Usuario Institucional
                 </label>
                 <div class="input-group">
@@ -95,7 +109,10 @@
               </div>
 
               <div class="mb-4">
-                <label for="password" class="form-label text-muted fw-semibold mb-2">
+                <label
+                  for="password"
+                  class="form-label text-muted fw-semibold mb-2"
+                >
                   Contraseña
                 </label>
                 <div class="input-group">
@@ -104,21 +121,35 @@
                   </span>
                   <input
                     type="password"
-                    class="form-control border-start-0 ps-2"
+                    class="form-control border-start-0 border-end-0 ps-2"
                     id="password"
                     name="password"
                     placeholder="••••••••"
                     required
                   />
+                  <button
+                    class="btn border border-start-0 bg-transparent text-secondary px-3"
+                    type="button"
+                    id="botonMostrarContrasenia"
+                    onclick="alternarVisibilidadContrasenia()"
+                  >
+                    <i class="bi bi-eye" id="iconoContrasenia"></i>
+                  </button>
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold mt-3">
+              <button
+                type="submit"
+                class="btn btn-primary w-100 py-2 fw-semibold mt-3"
+              >
                 Ingresar al Sistema <i class="bi bi-arrow-right ms-2"></i>
               </button>
             </form>
           </div>
-
-        </div> </div> </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>
 </html>
