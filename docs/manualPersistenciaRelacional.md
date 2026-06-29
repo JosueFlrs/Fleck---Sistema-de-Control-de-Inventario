@@ -120,7 +120,7 @@ INSERT INTO ubicacion (edificio, aula, capacidad_equipos) VALUES ('Mendoza', 'La
 - [x] Motor SQL Server Express 2022 aprovisionado.
 - [x] Protocolo TCP/IP activo en puerto 1433.
 - [x] Reglas del Firewall de Windows restringidas a IPs específicas.
-- [x] Estructura DDL (`schema.sql`) y datos semilla (`seed-data.sql`) aplicados.
+- [x] Estructura DDL (`schema.sql`) y datos semilla (`data.sql`) aplicados.
 - [x] Organización de Grupos de Seguridad Global creados en Active Directory (`itu.local`).
 - [x] Logins de Autenticación de Windows enlazados y mapeados a los grupos AD.
 - [x] Pruebas de lectura/escritura certificadas según el rol del usuario.
