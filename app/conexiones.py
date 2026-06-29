@@ -37,15 +37,32 @@ def get_mongo_collection():
         print(f"[ERROR MONGO] No se pudo conectar a MongoDB: {e}")
         return None
 
-def ldap_autenticar(username, password):
-    """Valida las credenciales del usuario contra el Active Directory / LDAP."""
+def ldap_autenticar(nombreUsuario, contrasenia):
+    """Valida credenciales y devuelve el rol del usuario basado en sus grupos de AD."""
     try:
-        user_principal = (username if '@' in username else f"{username}@{LDAP_DOMAIN}")
-        server = Server(LDAP_HOST, port=LDAP_PORT, get_info=ALL, connect_timeout=5)
-        # Intenta un enlace (bind). Si las credenciales fallan, lanza una excepción.
-        conn = Connection(server, user=user_principal, password=password, auto_bind=True)
-        conn.unbind()
-        return True
-    except Exception as e:
-        print(f"[INFO LDAP] Bind fallido para '{username}': {e}")
-        return False
+        usuarioPrincipal = (nombreUsuario if '@' in nombreUsuario else f"{nombreUsuario}@{LDAP_DOMAIN}")
+        servidorLdap = Server(LDAP_HOST, port=LDAP_PORT, get_info=ALL, connect_timeout=5)
+        conexionAd = Connection(servidorLdap, user=usuarioPrincipal, password=contrasenia, auto_bind=True)
+
+        conexionAd.search(
+            search_base='DC=itu,DC=local', 
+            search_filter=f'(userPrincipalName={usuarioPrincipal})',
+            attributes=['memberOf']
+        )
+
+        rolAsignado = 'lectura'
+        
+        if conexionAd.entries:
+            gruposUsuario = conexionAd.entries[0].memberOf.values
+            textoGrupos = str(gruposUsuario)
+            
+            # Si pertenece al grupo de técnicos o admin, le damos control total
+            if 'Grupo_AD_Tecnicos' in textoGrupos or 'Grupo_AD_Admin' in textoGrupos:
+                rolAsignado = 'tecnico'
+
+        conexionAd.unbind()
+        return True, rolAsignado
+        
+    except Exception as error:
+        print(f"[INFO LDAP] Bind fallido para '{nombreUsuario}': {error}")
+        return False, None

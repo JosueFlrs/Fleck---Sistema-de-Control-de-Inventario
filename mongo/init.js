@@ -1,9 +1,7 @@
 // =========================================================
 // init.js  —  Inicialización de MongoDB (inventario-db)
 //
-// Crea la coleccion "hardware" con validador de esquema,
-// inserta los documentos desde seeds/hardware.json y
-// crea indices para optimizar las busquedas.
+// Crea la coleccion "hardware" con validador de esquema
 //
 // =========================================================
 

@@ -38,24 +38,22 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Gestiona el inicio de sesión. 
-    Por GET: Muestra el formulario de login.
-    Por POST: Recibe las credenciales y las valida contra el servidor LDAP.
-    """
     if request.method == 'GET':
         return render_template('login.html')
         
-    username = request.form.get('username', '').strip()
-    password = request.form.get('password', '').strip()
+    nombreUsuario = request.form.get('username', '').strip()
+    contrasenia = request.form.get('password', '').strip()
     
-    if not username or not password:
+    if not nombreUsuario or not contrasenia:
         flash('Ingresa usuario y contrasena', 'danger')
         return redirect(url_for('login'))
         
-    if ldap_autenticar(username, password):
-        session['username'] = username  # Guardamos el usuario en la sesión cifrada
-        flash(f'Bienvenido, {username}', 'success')
+    esValido, rolUsuario = ldap_autenticar(nombreUsuario, contrasenia)
+    
+    if esValido:
+        session['username'] = nombreUsuario 
+        session['rol'] = rolUsuario
+        flash(f'Bienvenido, {nombreUsuario}', 'success')
         return redirect(url_for('dashboard'))
         
     flash('Usuario o contrasena incorrectos', 'danger')
@@ -144,6 +142,10 @@ def nuevo_equipo():
     """
     if not session.get('username'):
         return redirect(url_for('login'))
+    
+    if session.get('rol') != 'tecnico':
+        flash('Acceso denegado: Tu perfil es de solo lectura.', 'danger')
+        return redirect(url_for('inventario'))
 
     if request.method == 'GET':
         conn = get_sql_connection()
@@ -251,6 +253,10 @@ def eliminar_equipo(equipo_id):
     """
     if not session.get('username'):
         return redirect(url_for('login'))
+    
+    if session.get('rol') != 'tecnico':
+        flash('Acceso denegado: No tenes permisos para eliminar registros.', 'danger')
+        return redirect(url_for('inventario'))
 
     conn = get_sql_connection()
     if conn is not None:

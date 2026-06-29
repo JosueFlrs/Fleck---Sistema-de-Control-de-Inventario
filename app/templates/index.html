@@ -31,11 +31,11 @@
       >
         <div class="text-center py-4 px-2 mb-2">
           <img
-              src="{{ url_for('static', filename='img/logo-tranparente.png') }}"
-              alt="Logo"
-              class="mb-3"
-              style="width: 100px; height: auto;"
-            />
+            src="{{ url_for('static', filename='img/logo-tranparente.png') }}"
+            alt="Logo"
+            class="mb-3"
+            style="width: 100px; height: auto"
+          />
           <div
             class="text-white fw-bold mt-2"
             style="font-size: 1.1rem; letter-spacing: 0.5px"
@@ -60,11 +60,13 @@
               <i class="bi bi-list-ul"></i> Inventario
             </a>
           </li>
+          {% if session.rol == 'tecnico' %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('nuevo_equipo') }}">
               <i class="bi bi-plus-circle"></i> Nuevo Equipo
             </a>
           </li>
+          {% endif %}
         </ul>
         <div
           class="mt-auto p-3 text-center"
