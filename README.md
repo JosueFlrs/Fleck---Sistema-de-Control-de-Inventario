@@ -34,7 +34,7 @@ El sistema opera bajo un esquema de **JOIN lógico en Backend**. La API desarrol
 | :--- | :--- | :--- | :--- | :--- |
 | **Perímetro**: pfSense Firewall | `192.168.1.254` | — | — | pfSense 2.8.1 |
 | **Directorio**: Active Directory | `192.168.1.10` | `192.168.1.254` | `127.0.0.1` (Local) | Windows Server 2022 |
-| **Relacional**: SQL Server Express | `192.168.1.20` | `192.168.1.254` | `192.168.1.10` | Windows Server 2022 |
+| **Relacional**: SQL Server | `192.168.1.20` | `192.168.1.254` | `192.168.1.10` | Windows Server 2022 |
 | **Orquestador**: Minikube Clúster | `192.168.1.30` | `192.168.1.254` | `192.168.1.10` | Ubuntu Server |
 
 ---
